@@ -1,25 +1,17 @@
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ComponentProps, ReactNode } from "react";
+import { Nav, NavLink } from "@/components/Nav";
 
-export function Nav({ children }: { children: ReactNode }) {
-    return (
-        <nav className="bg-primary text-primary-foreground flex justify-center px-4">
-            {children}
-        </nav>
-    )
-}
+export const dynamic = "force-dynamic"
 
-export function NavLink(props: Omit<ComponentProps<typeof Link>, "className">) {
-    const pathname = usePathname();
+export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <Link
-            {...props}
-            className={cn(
-                "p-4 hover:bg-secondary hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground",
-                pathname === props.href && "bg-background text-foreground"
-            )}
-        />
+        <>
+            <Nav>
+                <NavLink href="/admin">Dashboard</NavLink>
+                <NavLink href="/admin/products">Products</NavLink>
+                <NavLink href="/admin/customers">Customers</NavLink>
+                <NavLink href="/admin/sales">Sales</NavLink>
+            </Nav>
+            <div className="container my-6">{children}</div>
+        </>
     );
 }
