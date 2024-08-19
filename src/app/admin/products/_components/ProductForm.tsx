@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { formatCurrency } from "@/lib/formatters";
 import { useState } from "react";
-import addProduct from "../../_actions/product";
+import {addProduct} from "../../_actions/product";
 
 export default function ProductForm() {
     const [priceInCents, setPriceInCents] = useState<number | undefined>(0);

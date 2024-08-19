@@ -1,5 +1,5 @@
 "use server"
 
-export default function addProduct(formData: FormData) {
+export async function addProduct(formData: FormData) {
     console.log(formData)
 }
